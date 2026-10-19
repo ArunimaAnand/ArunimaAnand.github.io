@@ -1,0 +1,49 @@
+:root{--font-ui:'Nunito Sans',Arial,sans-serif;--font-code:'Space Mono',ui-monospace,monospace}
+body,button,input,select{font-family:var(--font-ui)}
+h1,h2,h3,.hero h1,.welcome-line,.project h3,.brand{font-family:var(--font-ui)!important;font-style:normal}
+h2{font-weight:800;letter-spacing:-1.2px;line-height:1.15;font-size:43px}
+h2 em{font-style:normal;font-weight:800}
+.hero h1{font-weight:800;letter-spacing:-2.6px}
+.welcome-line{font-weight:700;letter-spacing:-.4px}
+.sticky{font-family:var(--font-ui);font-weight:600}.sticky em{font-style:normal}
+.project h3{font-weight:800;font-size:23px;line-height:1.25;letter-spacing:-.6px}
+.eyebrow,.project-meta,.mini-label{font-family:var(--font-code);font-size:9px!important;letter-spacing:.3px!important}
+.project-art .mini-label{font-size:7.5px!important;top:16px;left:18px}
+.project-diagram{display:block;width:100%;height:205px;overflow:visible}
+.project-diagram text{font-family:var(--font-code);letter-spacing:-.35px}
+.project-diagram text[font-size="10"]{font-size:8px}
+.project-diagram text[font-size="11"]{font-size:9px}
+.organization-link{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:4px}
+.organization-link:hover{color:var(--accent);text-decoration:underline}
+.organization-link>span{font-family:var(--font-ui);font-size:14px;color:var(--accent)}
+.timeline h3{font-size:21px;line-height:1.35;font-weight:800;letter-spacing:-.4px}
+.skills-panel{padding:22px;min-height:410px;border-radius:24px}
+.skill-board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;width:100%;align-items:stretch}
+.skill-tile{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:13px;min-width:0;min-height:104px;padding:15px 12px;border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:0 3px 0 var(--shadow);transition:transform .2s,border-color .2s}
+.skill-tile:hover{transform:translateY(-3px);border-color:var(--flower)}
+.skill-glyph{display:grid;place-items:center;flex:none;width:31px;height:31px;border-radius:9px;background:var(--soft);color:var(--accent);font:700 10px/1 var(--font-code)}
+.skill-glyph svg{width:18px;height:18px}
+.skill-label{font-size:11px;font-weight:700;line-height:1.35;overflow-wrap:anywhere}
+.skill-tile:first-child{grid-column:span 2;grid-row:span 2;min-height:220px;padding:24px 21px;background:var(--soft);border-color:var(--flower);border-radius:20px;position:relative}
+.skill-tile:first-child:after{content:'✦';position:absolute;top:19px;right:19px;font-size:24px;color:var(--accent);opacity:.6}
+.skill-tile:first-child .skill-glyph{width:59px;height:59px;background:var(--card);font-size:23px;border-radius:17px}
+.skill-tile:first-child .skill-glyph svg{width:32px;height:32px}
+.skill-tile:first-child .skill-label{font-size:23px;line-height:1.2;letter-spacing:-.4px}
+.skill-tile:nth-child(5n){background:var(--soft)}
+.tool-tabs button>span:not(.skill-icon){font-size:12px;font-weight:700}
+.github-data-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.github-data-header p{font-size:21px;font-weight:800;letter-spacing:-.4px;margin:0}
+#github-updated{font:9px/1.6 var(--font-code);color:var(--muted)}
+.github-chart-scroll.year-calendar{background:var(--card);padding:18px 10px 8px;border:0;border-radius:8px}
+.year-calendar svg{display:block;width:100%;min-width:800px;height:auto}
+.calendar-label{font:9px var(--font-code);fill:var(--muted)}
+.contribution-cell{stroke:var(--line);stroke-width:.3}
+.contribution-cell.level-0{fill:var(--soft)}
+.contribution-cell.level-1{fill:#f5b6cc}.contribution-cell.level-2{fill:#eb87ad}.contribution-cell.level-3{fill:#cc4d82}.contribution-cell.level-4{fill:#a62960}
+.contribution-cell.future{fill:var(--card);stroke:var(--line);opacity:.45}
+.contribution-cell:not(.future):hover{stroke:var(--ink);stroke-width:1.2}
+.github-caption{font-size:9px;line-height:1.7;flex-wrap:wrap}
+.contact h2{font-size:56px;font-weight:800}
+@media(max-width:1000px){.skills-panel{padding:17px}.skill-board{gap:10px}.skill-tile{padding:12px 10px;min-height:100px}.skill-tile:first-child{padding:20px 17px}.skill-label{font-size:10px}}
+@media(max-width:760px){h2,.section-heading h2,.section-intro h2{font-size:35px;letter-spacing:-.8px}.hero h1{font-size:63px}.project h3{font-size:26px}.project-diagram{height:211px}.skill-board{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.skills-panel{padding:16px 12px;min-height:320px}.skill-tile{min-height:104px;padding:15px 14px;border-radius:13px}.skill-label{font-size:12px;line-height:1.35}.skill-tile:first-child{grid-column:span 2;grid-row:span 1;min-height:102px;flex-direction:row;align-items:center;justify-content:flex-start;gap:19px;padding:20px}.skill-tile:first-child .skill-label{font-size:21px;padding-right:12px}.skill-tile:first-child .skill-glyph{width:48px;height:48px;font-size:20px;flex:none}.skill-tile:first-child:after{font-size:16px;top:13px;right:14px}.github-data-header p{font-size:19px}.contact h2{font-size:43px}.timeline h3{font-size:21px}.project-art .mini-label{font-size:7px!important}}
+@media(max-width:380px){.hero h1{font-size:56px}.skill-label{font-size:11px}.skill-tile{padding:13px 12px}.skill-tile:first-child .skill-label{font-size:18px}.skill-tile:first-child{padding:18px;gap:15px}}

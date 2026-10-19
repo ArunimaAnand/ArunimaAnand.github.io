@@ -1,0 +1,104 @@
+/* Second refinement: compact navigation, a personal introduction, and skill bubbles. */
+.header .brand{font-size:28px;gap:0;letter-spacing:-1.6px}
+.header .brand-dot{margin-left:0}
+.header nav{gap:23px;font-size:13px;font-weight:600}
+.header nav a{padding:7px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.header nav a:hover,.header nav a.current{border-color:var(--accent)}
+.hero{min-height:610px;padding-top:65px;padding-bottom:70px;grid-template-columns:1fr 1fr;gap:65px}
+.hero h1{font-family:'DM Sans',Arial,sans-serif;letter-spacing:-3px;font-weight:700;line-height:1.04;font-size:75px;margin-bottom:30px}
+.welcome-line{display:flex;align-items:center;gap:12px;font-family:'DM Sans',Arial,sans-serif;font-size:23px;letter-spacing:-.8px;font-weight:600;margin-bottom:25px;line-height:1.4}
+.welcome-flower{font-size:36px;color:var(--accent);font-weight:400;letter-spacing:0;line-height:1}
+.hero-name{display:block;color:var(--ink)}
+.hero-roles{display:flex;flex-direction:column;gap:7px;font-size:16px;font-weight:500;color:var(--muted);line-height:1.5;margin:0}
+.hero-roles span:last-child{flex-basis:auto}
+.sticky.sticky-top{width:142px;right:1px;font-size:18px;padding:23px 14px 20px;line-height:1.45}
+.sticky .note-label{font-size:7px;letter-spacing:1.4px}
+.code-sticker{width:312px;left:-12px;bottom:-8px}
+.code-sticker pre{font-size:9px;line-height:1.95}
+.about .eyebrow,.section .eyebrow{text-transform:none;font-size:11px;letter-spacing:1.1px}
+.about{gap:55px}
+.about-content p{line-height:1.85}
+.journey{padding-top:30px;grid-template-columns:.75fr 1.35fr;gap:55px}
+.journey .section-intro{position:sticky;top:40px;align-self:start}
+.timeline-content ul{margin:19px 0 23px;padding-left:17px;color:var(--muted);font-size:12px;line-height:1.85}
+.timeline-content li{margin-bottom:13px;padding-left:5px}
+.timeline-content li::marker{color:var(--accent);font-size:9px}
+.timeline-role{font-size:12px;line-height:1.7}
+.timeline-item{padding-bottom:28px;margin-bottom:28px}
+.project-grid{margin-top:40px}
+.toolbox{grid-template-columns:1fr 1.65fr;align-items:start;gap:35px}
+.tool-tabs{padding-top:14px}
+.tool-tabs button{border:1px solid transparent!important;display:flex;gap:13px;align-items:center;padding:10px 14px;text-align:left;border-radius:15px;margin-bottom:5px;font-size:12px;color:var(--muted);transition:background .2s,border-color .2s}
+.tool-tabs button:first-child{border-top:1px solid transparent!important}
+.tool-tabs button>span:not(.skill-icon){font-size:12px;flex:1}
+.skill-icon{flex:0 0 37px!important;width:37px;height:37px;display:grid;place-items:center;border-radius:50%;background:var(--card);border:1px solid var(--line);color:var(--accent)}
+.skill-icon svg{width:19px;height:19px}
+.tool-tabs button[aria-selected=true]{background:var(--card);border-color:var(--line)!important;color:var(--accent)}
+.tab-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:0;flex:0 0 5px}
+.tool-tabs button[aria-selected=true] .tab-dot{opacity:1}
+.skills-panel{border:0;background:radial-gradient(circle,var(--line) .8px,transparent .8px);background-size:17px 17px;border-radius:25px;min-height:370px;display:flex;align-items:center;padding:23px 18px;box-shadow:none}
+.skill-chips{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:15px;width:100%}
+.skill-chips span{display:inline-flex;align-items:center;justify-content:center;min-height:48px;background:var(--card);border:1px solid var(--line);box-shadow:3px 5px 0 var(--shadow);border-radius:60px;padding:13px 19px;font-size:12px;line-height:1.5;max-width:100%;text-align:center;animation:bubble-in .3s ease-out both}
+.skill-chips span:nth-child(4n+1){background:var(--accent);border-color:var(--accent);color:var(--bg);min-height:62px;font-size:13px;transform:rotate(-4deg)}
+.skill-chips span:nth-child(4n+2){font-family:ui-monospace,monospace;transform:rotate(3deg)}
+.skill-chips span:nth-child(4n+3){background:var(--soft);border-style:dashed;border-color:var(--accent);min-height:55px}
+@keyframes bubble-in{from{opacity:0;scale:.9}to{opacity:1;scale:1}}
+.contact{padding-top:85px;padding-bottom:90px}
+.contact h2{font-size:51px;letter-spacing:-2px;line-height:1.2}
+.contact-actions{margin:30px 0 0}
+@media(max-width:1000px){.header nav{gap:16px;font-size:12px}.hero{gap:35px}.hero h1{font-size:67px}.welcome-line{font-size:21px}.hero-art{transform:scale(.85)}.journey{gap:30px}.toolbox{gap:25px}.tool-tabs button{gap:9px;padding:9px 10px}.tool-tabs button>span:not(.skill-icon){font-size:11px}}
+@media(max-width:760px){.header{display:grid;grid-template-columns:1fr 32px;height:auto;padding-top:20px;padding-bottom:15px;gap:15px 10px;align-items:center}.header .brand{font-size:27px;grid-column:1;grid-row:1}.header .theme-button{grid-column:2;grid-row:1}.header nav{grid-column:1/-1;grid-row:2;justify-content:space-between;gap:9px;font-size:11px}.header nav a{white-space:nowrap;padding:4px 0}.hero{grid-template-columns:minmax(0,1fr);gap:28px;padding-top:45px;padding-bottom:65px;min-height:0}.hero h1{font-size:66px;line-height:1.05;letter-spacing:-2.6px;margin-bottom:26px}.welcome-line{justify-content:center;gap:9px;font-size:20px;margin-bottom:21px;letter-spacing:-.7px}.welcome-flower{font-size:30px}.hero-roles{gap:5px;font-size:14px;align-items:center;max-width:none}.hero-art{height:413px;transform:scale(.85);margin-top:0}.sticky.sticky-top{width:129px;font-size:17px;right:-3px}.code-sticker{width:312px;left:-5px;bottom:-2px;text-align:left}.code-sticker pre{font-size:9px}.about{gap:10px}.journey{grid-template-columns:1fr;gap:20px;padding-top:0}.journey .section-intro{position:static}.timeline-content ul{font-size:12px;line-height:1.85;padding-left:15px}.timeline-content li{margin-bottom:14px}.project-grid{margin-top:30px}.toolbox{grid-template-columns:1fr;gap:23px}.tool-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:0}.tool-tabs button{margin:0;border:1px solid transparent!important;border-radius:13px;padding:8px 7px;gap:7px;min-height:53px;font-size:11px}.tool-tabs button:first-child{border-top:1px solid transparent!important}.tool-tabs button>span:not(.skill-icon){font-size:10px;line-height:1.45}.skill-icon{flex-basis:29px!important;width:29px;height:29px}.skill-icon svg{width:16px;height:16px}.tab-dot{display:none}.tool-tabs button[aria-selected=true]{border-color:var(--line)!important;background:var(--card);color:var(--accent)}.skills-panel{min-height:310px;padding:17px 9px}.skill-chips{gap:11px}.skill-chips span{min-height:43px;font-size:11px;padding:11px 15px}.skill-chips span:nth-child(4n+1){font-size:12px;min-height:53px}.skill-chips span:nth-child(4n+3){min-height:48px}.contact h2{font-size:37px;letter-spacing:-1.5px}.contact{padding-bottom:70px;padding-top:65px}}
+@media(max-width:380px){.header nav{font-size:10px;gap:7px}.header{padding-left:18px;padding-right:18px}.hero h1{font-size:59px}.welcome-line{font-size:18px}.hero-art{transform:scale(.78);height:370px}.code-sticker{left:-17px}.contact h2{font-size:32px}.skill-chips span{padding:10px 13px}.tool-tabs button>span:not(.skill-icon){font-size:9px}}
+@media(prefers-reduced-motion:reduce){.skill-chips span{animation:none}}
+/* Flower-site polish: simplified header, location, and orderly skill bubbles. */
+.header{justify-content:flex-end;gap:28px}
+.header nav{gap:27px}
+.hero-name{color:var(--accent)}
+.hero-roles{flex-direction:row;flex-wrap:wrap;gap:7px 12px;font-size:12px;font-weight:500;max-width:none;align-items:center}
+.hero-roles span{white-space:nowrap;display:inline-flex;align-items:center}
+.hero-roles span+span:before{content:'·';color:var(--accent);margin-right:12px}
+.intro-location{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);margin:22px 0 0}
+.intro-location svg,.work-location svg{width:14px;height:14px;flex:none}
+.art-caption{bottom:-16px}
+.sticky.sticky-top{width:153px;font-size:17px;padding:24px 15px 19px}
+.code-sticker{width:319px}
+.code-sticker pre{font-size:9px;line-height:2}
+.work-location{display:flex;align-items:center;gap:5px;font-size:10px;line-height:1.7;margin:0 0 13px;color:var(--muted)}
+.timeline-date{margin-bottom:5px}
+.timeline .expand{top:44px}
+.timeline-content p{margin:16px 0 0;font-size:12px;line-height:1.9}
+.course-link{display:inline-block;color:var(--accent);font-size:10px;line-height:1.65;border-bottom:1px solid var(--line);margin-top:17px}
+.course-link+p{margin-top:12px}
+.project-art{height:241px;padding-top:34px}
+.project-art img{height:205px}
+.project-art .mini-label{font-size:8px;letter-spacing:.7px;top:16px}
+.skills-panel{padding:28px 24px;min-height:385px}
+.skill-chips{gap:18px 14px;justify-content:center;align-items:stretch}
+.skill-chips span,.skill-chips span:nth-child(4n+1),.skill-chips span:nth-child(4n+2),.skill-chips span:nth-child(4n+3){flex:0 0 calc(33.333% - 10px);min-width:0;min-height:70px;max-width:100%;transform:none;font-family:'DM Sans',Arial,sans-serif;font-size:11px;line-height:1.5;padding:13px 11px;border-radius:45px;border:1px solid var(--line);background:var(--card);color:var(--ink);box-shadow:0 3px 8px var(--shadow)}
+.skill-chips span:nth-child(3n+1){background:var(--soft);border-color:var(--flower);color:var(--accent)}
+.skill-chips span:nth-child(3n+2){border-style:dashed;border-color:var(--accent)}
+.contact h2{font-size:47px}
+@media(max-width:1000px){.header nav{gap:22px;font-size:12px}.hero-roles{font-size:11px;gap:7px 9px}.hero-roles span+span:before{margin-right:9px}.skills-panel{padding:24px 15px}.skill-chips{gap:15px 12px}}
+@media(max-width:760px){.header{grid-template-columns:1fr 30px;gap:10px;padding-top:18px;padding-bottom:18px}.header nav{grid-row:1;grid-column:1;justify-content:center;flex-wrap:wrap;gap:10px 15px;font-size:11px}.header .theme-button{grid-column:2;grid-row:1}.hero-roles{justify-content:center;font-size:11px;gap:6px 9px;flex-direction:row}.hero-roles span+span:before{margin-right:9px}.intro-location{justify-content:center;font-size:10px;margin-top:21px}.sticky.sticky-top{width:144px;font-size:16px}.code-sticker{left:-8px;width:319px}.skills-panel{padding:25px 14px;min-height:320px}.skill-chips{gap:16px 13px}.skill-chips span,.skill-chips span:nth-child(4n+1),.skill-chips span:nth-child(4n+2),.skill-chips span:nth-child(4n+3){flex-basis:calc(50% - 7px);min-height:64px;font-size:11px;padding:12px 11px}.contact h2{font-size:33px}.project-art{height:249px}.project-art img{height:211px}}
+@media(max-width:380px){.header nav{font-size:10px;gap:8px 12px}.header{padding-left:20px;padding-right:20px}.hero-roles{font-size:10px;gap:7px 7px}.hero-roles span+span:before{margin-right:7px}.code-sticker{left:-20px}.contact h2{font-size:29px}.skill-chips span,.skill-chips span:nth-child(4n+1),.skill-chips span:nth-child(4n+2),.skill-chips span:nth-child(4n+3){font-size:10px}}
+.github-section{padding-top:65px;padding-bottom:75px}
+.github-section .section-heading{align-items:center;margin-bottom:30px}
+.github-section h2{font-size:43px}
+.github-card{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:30px}
+.github-chart-scroll{background:#fff;border:1px solid #eee4e8;border-radius:10px;padding:24px 22px;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--flower) transparent}
+.github-chart-scroll a{display:block;width:max-content;min-width:100%;text-align:center}
+.github-chart-scroll img{display:block;margin:auto;min-width:663px;max-width:100%;width:100%;height:auto}
+.github-caption{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:17px;color:var(--muted);font-size:10px}
+.github-caption>a{font-size:9px;text-decoration:underline;text-underline-offset:3px}
+.calendar-scroll-hint{display:none}
+#github-calendar-fallback{font-size:12px;color:var(--muted);margin:18px 0}
+#github-calendar-fallback a{color:var(--accent);text-decoration:underline}
+.recommendations-section{padding-bottom:40px}
+.recommendation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.recommendation-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px;display:flex;flex-direction:column;gap:25px}
+.recommendation-card blockquote{margin:0;font-size:15px;line-height:1.9;color:var(--ink);white-space:pre-line}
+.recommendation-card blockquote:before{content:'“';display:block;color:var(--accent);font:55px/1 Georgia,serif;margin-bottom:10px}
+.recommendation-author{border-top:1px solid var(--line);padding-top:17px;margin-top:auto}
+.recommendation-author a{font-size:13px;font-weight:600;color:var(--accent)}
+.recommendation-author p{font-size:11px;color:var(--muted);margin:5px 0 0}
+@media(max-width:760px){.github-section{padding-top:50px;padding-bottom:55px}.github-section .section-heading{display:flex;align-items:start;gap:12px;flex-wrap:wrap}.github-section h2{font-size:37px}.github-card{padding:18px 13px}.github-chart-scroll{padding:18px 16px}.github-caption{flex-wrap:wrap;font-size:9px;gap:10px}.calendar-scroll-hint{display:inline}.recommendation-grid{grid-template-columns:1fr}.recommendation-card{padding:24px}.recommendation-card blockquote{font-size:14px}}
