@@ -1,0 +1,32 @@
+/* Readable type and a compact, full-width toolbox. */
+.hero-roles{display:flex;flex-direction:column;align-items:flex-start;gap:9px;max-width:none;margin:0;font-size:21px;font-weight:700;line-height:1.4;color:var(--ink)}
+.hero-roles span{display:flex;align-items:center;gap:13px}
+.hero-roles span:before,.hero-roles span+span:before{content:'';display:inline-block;width:6px;height:6px;flex:none;border-radius:50%;background:var(--flower);margin:0}
+.intro-location{font-size:16px;font-weight:600;gap:9px;margin-top:24px}
+.intro-location svg{width:19px;height:19px}
+.about .eyebrow,.section .eyebrow{font-family:var(--font-ui);font-size:15px!important;letter-spacing:.7px!important;font-weight:800;text-transform:none;color:var(--accent);margin-bottom:17px}
+.toolkit-section .section-heading{margin-bottom:32px}
+.toolkit-section h2{font-size:48px}
+.toolbox{display:block;border:1px solid var(--line);border-radius:26px;background:var(--card);padding:12px;box-shadow:0 12px 35px var(--shadow);overflow:hidden}
+.tool-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:4px 4px 16px}
+.tool-tabs button{margin:0;display:flex;align-items:center;gap:12px;min-height:69px;padding:12px 17px;border:1px solid transparent!important;border-radius:13px;background:transparent;color:var(--muted);text-align:left;transition:background .2s,border-color .2s,color .2s}
+.tool-tabs button:first-child{border-top:1px solid transparent!important}
+.tool-tabs button:hover{background:var(--soft);color:var(--ink)}
+.tool-tabs button[aria-selected=true]{background:var(--soft);border-color:var(--flower)!important;color:var(--accent)}
+.tool-tabs button>span:not(.skill-icon){font-size:15px;font-weight:700;line-height:1.4}
+.tool-tabs .skill-icon{width:35px;height:35px;flex:0 0 35px;border:0;background:transparent;box-shadow:none}
+.tool-tabs .skill-icon svg{width:24px;height:24px}
+.tool-tabs .tab-dot{display:none}
+.skills-panel{border-radius:17px;border:1px solid var(--line);padding:28px;min-height:0;background-color:var(--soft);background-image:radial-gradient(var(--line) 1px,transparent 1px);background-size:18px 18px}
+.skill-board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;align-items:stretch}
+.skill-tile,.skill-tile:first-child{display:flex;flex-direction:row;justify-content:flex-start;align-items:center;gap:13px;grid-column:auto;grid-row:auto;min-height:86px;min-width:0;padding:17px 16px;border:1px solid var(--line);border-radius:13px;background:var(--card);box-shadow:0 3px 0 var(--shadow);position:relative;transition:transform .2s,border-color .2s}
+.skill-tile:first-child:after{content:none}
+.skill-tile:nth-child(5n){background:var(--card)}
+.skill-tile:hover{transform:translateY(-3px);border-color:var(--flower)}
+.skill-glyph,.skill-tile:first-child .skill-glyph{width:39px;height:39px;border-radius:11px;flex:0 0 39px;background:var(--soft);color:var(--accent);font:700 12px/1 var(--font-code)}
+.skill-glyph svg,.skill-tile:first-child .skill-glyph svg{width:22px;height:22px}
+.skill-label,.skill-tile:first-child .skill-label{font-size:15px;line-height:1.35;letter-spacing:0;font-weight:700;padding:0;overflow-wrap:break-word}
+@media(max-width:1000px){.hero-roles{font-size:19px}.skill-board{grid-template-columns:repeat(3,minmax(0,1fr))}.skills-panel{padding:22px}.tool-tabs button{padding:10px 12px}.tool-tabs button>span:not(.skill-icon){font-size:14px}}
+@media(max-width:760px){.hero-roles{align-items:flex-start;width:max-content;max-width:100%;margin:auto;font-size:19px;gap:9px;text-align:left}.intro-location{font-size:15px;margin-top:23px}.about .eyebrow,.section .eyebrow{font-size:14px!important}.toolkit-section h2{font-size:38px}.toolbox{padding:8px;border-radius:21px}.tool-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:3px 1px 12px}.tool-tabs button{min-height:74px;padding:10px 9px;gap:7px}.tool-tabs button>span:not(.skill-icon){font-size:13px}.tool-tabs .skill-icon{width:26px!important;height:28px;flex:0 0 26px!important}.tool-tabs .skill-icon svg{width:21px;height:21px}.skills-panel{padding:16px 12px;border-radius:14px;min-height:0}.skill-board{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.skill-tile,.skill-tile:first-child{min-height:88px;padding:12px 10px;gap:9px;border-radius:11px}.skill-glyph,.skill-tile:first-child .skill-glyph{width:30px;height:34px;flex-basis:30px;font-size:10px}.skill-label,.skill-tile:first-child .skill-label{font-size:13px}.skill-tile:first-child .skill-glyph svg{width:21px;height:21px}}
+@media(max-width:380px){.hero-roles{font-size:17px}.intro-location{font-size:14px}.tool-tabs button>span:not(.skill-icon){font-size:12px}.skill-tile,.skill-tile:first-child{flex-direction:column;align-items:flex-start;gap:8px;min-height:100px}.skill-label,.skill-tile:first-child .skill-label{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.skill-tile,.tool-tabs button{transition:none}.skill-tile:hover{transform:none}}
