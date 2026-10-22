@@ -10,7 +10,7 @@
     if(!Array.isArray(data.contributions)||!Number.isFinite(data.total?.[year]))throw new Error('Invalid contribution data');
     const today=key(); const entries = new Map(data.contributions.filter(d=>typeof d.date==='string'&&d.date.startsWith(year+'-')&&Number.isFinite(d.count)&&d.count>=0).map(d=>[d.date,d]));
     const start=Date.UTC(year,0,1), end=Date.UTC(year+1,0,1), days=Math.round((end-start)/86400000), offset=new Date(start).getUTCDay(), weeks=Math.ceil((days+offset)/7), step=14, left=33, top=28, width=left+weeks*step+12;
-    const svg=node('svg',{viewBox:`0 0 ${width} 151`,role:'img','aria-label':`${data.total[year]} GitHub contributions in ${year}; January through December. Future dates are empty.`});
+    const svg=node('svg',{viewBox:`0 0 ${width} 132`,role:'img','aria-label':`${data.total[year]} GitHub contributions in ${year}; January through December. Future dates are empty.`});
     svg.append(node('title',{},`${username}'s ${year} contribution calendar`));
     const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     months.forEach((month,m)=>{const day=Math.round((Date.UTC(year,m,1)-start)/86400000);svg.append(node('text',{x:left+Math.floor((day+offset)/7)*step,y:14,class:'calendar-label'},month));});
@@ -22,9 +22,6 @@
       const rect=node('rect',{x:left+Math.floor((i+offset)/7)*step,y:top+((i+offset)%7)*step,width:10.5,height:10.5,rx:2,class:future?'contribution-cell future':`contribution-cell level-${level}`});
       rect.append(node('title',{},future?`${date}: future date`:`${date}: ${record.count} contribution${record.count===1?'':'s'}`));svg.append(rect);
     }
-    const legendX=width-112;svg.append(node('text',{x:legendX-33,y:143,class:'calendar-label'},'Less'));
-    for(let i=0;i<5;i++)svg.append(node('rect',{x:legendX+i*14,y:134,width:10.5,height:10.5,rx:2,class:`contribution-cell level-${i}`}));
-    svg.append(node('text',{x:legendX+73,y:143,class:'calendar-label'},'More'));
     document.querySelector('#github-year-chart').replaceChildren(svg);
     document.querySelector('#github-total').textContent=`${new Intl.NumberFormat('en-US').format(data.total[year])} contributions in ${year}`;
     const dateLabel=new Intl.DateTimeFormat('en-US',{timeZone:zone,month:'short',day:'numeric',year:'numeric'}).format(new Date(stamp));

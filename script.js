@@ -134,12 +134,10 @@ function skillTile(label, index, key) {
   const glyph = document.createElement('span'); glyph.className = 'skill-glyph'; glyph.setAttribute('aria-hidden','true');
   const mono = {Python:'Py',SQL:'SQL',Java:'Jv','C++':'C++',R:'R',NumPy:'np',Pandas:'pd','scikit-learn':'sk',statsmodels:'sm',Matplotlib:'plt',NLTK:'nl'};
   if(key === 'languages') glyph.textContent = mono[label] || label.slice(0,2);
-  else {
-    const shapes = {ml:'<circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="m7 7 4 9m6-9-4 9M7 6h10"/>',deep:'<path d="M12 3v18M3 12h18M5 5l14 14M5 19 19 5"/><circle cx="12" cy="12" r="4"/>',genai:'<path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"/>',systems:'<path d="M6 18h12a4 4 0 0 0 .5-8A6.5 6.5 0 0 0 6 8a5 5 0 0 0 0 10Z"/>',analytics:'<path d="M4 3v17h17M8 16v-4m5 4V7m5 9v-6"/>'};
-    glyph.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">'+(shapes[key] || shapes.ml)+'</svg>';
-  }
   const name = document.createElement('span'); name.className = 'skill-label'; name.textContent = label;
-  tile.append(glyph,name); return tile;
+  if(key === 'languages') tile.append(glyph);
+  else tile.classList.add('skill-text-only');
+  tile.append(name); return tile;
 }
 function selectSkill(button) { const key = button.dataset.skill; $$('.tool-tabs button').forEach(b => { b.setAttribute('aria-selected', String(b === button)); b.tabIndex = b === button ? 0 : -1; }); const panel = $('#skills-panel'); panel.setAttribute('aria-labelledby', button.id); panel.querySelector('.skill-board').replaceChildren(...skills[key].tags.map((tag,i)=>skillTile(tag,i,key))); }
 selectSkill($('#tab-languages'));

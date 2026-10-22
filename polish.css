@@ -30,3 +30,14 @@
 @media(max-width:760px){.hero-roles{align-items:flex-start;width:max-content;max-width:100%;margin:auto;font-size:19px;gap:9px;text-align:left}.intro-location{font-size:15px;margin-top:23px}.about .eyebrow,.section .eyebrow{font-size:14px!important}.toolkit-section h2{font-size:38px}.toolbox{padding:8px;border-radius:21px}.tool-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:3px 1px 12px}.tool-tabs button{min-height:74px;padding:10px 9px;gap:7px}.tool-tabs button>span:not(.skill-icon){font-size:13px}.tool-tabs .skill-icon{width:26px!important;height:28px;flex:0 0 26px!important}.tool-tabs .skill-icon svg{width:21px;height:21px}.skills-panel{padding:16px 12px;border-radius:14px;min-height:0}.skill-board{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.skill-tile,.skill-tile:first-child{min-height:88px;padding:12px 10px;gap:9px;border-radius:11px}.skill-glyph,.skill-tile:first-child .skill-glyph{width:30px;height:34px;flex-basis:30px;font-size:10px}.skill-label,.skill-tile:first-child .skill-label{font-size:13px}.skill-tile:first-child .skill-glyph svg{width:21px;height:21px}}
 @media(max-width:380px){.hero-roles{font-size:17px}.intro-location{font-size:14px}.tool-tabs button>span:not(.skill-icon){font-size:12px}.skill-tile,.skill-tile:first-child{flex-direction:column;align-items:flex-start;gap:8px;min-height:100px}.skill-label,.skill-tile:first-child .skill-label{font-size:13px}}
 @media(prefers-reduced-motion:reduce){.skill-tile,.tool-tabs button{transition:none}.skill-tile:hover{transform:none}}
+
+/* A cleaner pairing: Manrope headings, DM Sans text. */
+:root{--font-ui:'DM Sans',Arial,sans-serif;--font-heading:'Manrope',Arial,sans-serif}
+h1,h2,h3,.hero h1,.welcome-line,.project h3,.brand{font-family:var(--font-heading)!important}
+.hero h1{font-weight:800;letter-spacing:-3px}
+.hero-roles{font-weight:600;letter-spacing:-.25px}
+.intro-location{font-weight:500}
+.skill-text-only,.skill-text-only:first-child{padding:20px;min-height:83px;align-items:center;justify-content:flex-start}
+.skill-text-only .skill-label,.skill-text-only:first-child .skill-label{font-size:15px;font-weight:600;line-height:1.45}
+.tool-tabs button>span:not(.skill-icon){font-weight:600}
+@media(max-width:760px){.hero h1{letter-spacing:-2.7px}.skill-text-only,.skill-text-only:first-child{padding:16px 14px;min-height:83px}.skill-text-only .skill-label,.skill-text-only:first-child .skill-label{font-size:14px}}

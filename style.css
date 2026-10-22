@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
 [hidden]{display:none!important}
 .sticky.sticky-top{padding-bottom:32px}
 :root{--bg:#fff8f7;--ink:#4d2839;--muted:#795764;--accent:#ba345e;--line:#e8cdd4;--soft:#f9e7ec;--card:#fffaf8;--paper:#fff0c8;--flower:#ee8caa;--shadow:#c64b7020;color-scheme:light}
