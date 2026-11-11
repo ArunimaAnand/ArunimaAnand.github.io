@@ -66,3 +66,60 @@ h1,h2,h3,.hero h1,.welcome-line,.project h3,.brand{font-family:var(--font-headin
 .skill-search span{font-size:13px}
 .recruiter-contact{font-size:16px;margin:0 0 20px}
 @media(max-width:760px){.hero-roles{font-size:14px}.hero .profile-note{left:0;bottom:0;width:min(345px,100%)}.teaching-terms{grid-template-columns:1fr}}
+
+/* Compact sections, a photo in the hero, and a nested teaching timeline. */
+.hero h1{font-size:clamp(46px,5.3vw,68px)}
+.welcome-line{font-size:20px}
+.hero-roles{font-size:14px}
+.intro-location{font-size:14px}
+.section{padding-top:66px;padding-bottom:66px}
+.section h2,.section-heading h2,.section-intro h2{font-size:35px}
+.about .eyebrow,.section .eyebrow{font-size:13px!important}
+.about-content p{font-size:13px;line-height:1.75;margin-bottom:15px}
+.timeline h3,.project h3{font-size:19px}
+.timeline-content li{margin-bottom:6px}
+.hero-portrait{position:absolute;z-index:2;right:8px;top:13px;width:185px;margin:0;padding:7px 7px 13px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:4px 6px 0 var(--shadow);transform:rotate(7deg)}
+.hero-portrait img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;object-position:50% 24%;border-radius:5px}
+.hero .profile-note{width:min(395px,100%);padding:12px 15px;transform:rotate(-3deg)}
+.profile-note pre{font-family:var(--font-code);font-size:10px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
+.profile-note code,.profile-note code span{font-weight:400}
+.profile-note .code-key{color:var(--accent)}
+.profile-note .code-value{color:var(--muted)}
+.teaching-terms{display:block;margin:14px 0 0 7px;padding-left:19px;border-left:1px solid var(--line)}
+.teaching-terms .teaching-term{position:relative;border:0;border-radius:0;background:none;padding:0 0 17px}
+.teaching-terms .teaching-term:last-child{padding-bottom:0}
+.teaching-term:before{content:'';position:absolute;left:-24px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+.teaching-terms h4{font-size:14px;margin:2px 0 4px}
+.teaching-terms p{margin:0}
+.project-art.causal-art{background:linear-gradient(140deg,#f8ecff,#d4b6fa)}
+.project-art.judge-art{background:linear-gradient(140deg,#ffecf5,#ffb7d7)}
+.project-art.ranking-art{background:linear-gradient(140deg,#e6fff5,#a3e4d4)}
+.project-art .mini-label{color:#43273b}
+.github-emblem{display:inline-grid;place-items:center;vertical-align:middle;width:24px;height:24px;margin-left:4px;border-radius:8px;background:#ede0ff;color:#7245a1}
+.github-emblem svg{width:15px;height:15px}
+.toolkit-section .section-heading{margin-bottom:18px}
+.toolbox{max-width:850px;margin:24px auto 0;padding:8px;border-radius:18px}
+.tool-tabs{gap:4px;padding:2px 2px 8px}
+.tool-tabs button{min-height:45px;padding:5px 8px;gap:5px;border-radius:9px}
+.tool-tabs button>span:not(.skill-icon){font-size:13px}
+.tool-tabs .skill-icon{width:28px;height:28px;flex-basis:28px}
+.tool-tabs .skill-icon svg{width:19px;height:19px}
+.skills-panel{padding:13px;min-height:0;border-radius:12px}
+.skill-board{gap:7px}
+.skill-board .skill-tile,.skill-board .skill-tile:first-child{min-height:47px;padding:7px 9px;gap:8px;border-radius:8px;flex-direction:row;align-items:center}
+.skill-board .skill-label,.skill-board .skill-tile:first-child .skill-label{font-size:12px}
+.skill-board .skill-glyph,.skill-board .skill-tile:first-child .skill-glyph{width:27px;height:27px;flex-basis:27px;border-radius:7px;font-size:9px}
+.recruiter-contact{font-size:14px}
+@media(max-width:760px){
+  .section{padding-top:49px;padding-bottom:49px}
+  .section h2,.section-heading h2,.section-intro h2{font-size:29px}
+  .hero h1{font-size:clamp(44px,13vw,57px)}
+  .welcome-line{font-size:18px}
+  .hero-roles,.intro-location{font-size:13px}
+  .hero-portrait{width:125px;right:4px;top:5px;padding:5px 5px 9px}
+  .hero .profile-note{width:min(350px,100%);left:0;bottom:0}
+  .profile-note pre{font-size:9px}
+  .tool-tabs button>span:not(.skill-icon){font-size:11px}
+  .skill-board .skill-label,.skill-board .skill-tile:first-child .skill-label{font-size:11px}
+  .skills-panel{padding:8px}
+}

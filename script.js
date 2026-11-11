@@ -138,13 +138,9 @@ function skillTile(label, index, key) {
   else tile.classList.add('skill-text-only');
   tile.append(name); return tile;
 }
-const skillQuery = $('#skill-query');
 function renderSkills(key) {
-  const query = skillQuery.value.trim().toLowerCase();
-  const tags = skills[key].tags.filter(tag => tag.toLowerCase().includes(query));
+  const tags = skills[key].tags;
   $('#skills-panel .skill-board').replaceChildren(...tags.map((tag, i) => skillTile(tag, i, key)));
-  $('#skill-count').textContent = tags.length + (tags.length === 1 ? ' skill' : ' skills');
-  $('#skill-empty').hidden = tags.length > 0;
 }
 function selectSkill(button) {
   $$('.tool-tabs button').forEach(tab => {
@@ -152,10 +148,8 @@ function selectSkill(button) {
     tab.tabIndex = tab === button ? 0 : -1;
   });
   $('#skills-panel').setAttribute('aria-labelledby', button.id);
-  skillQuery.value = '';
   renderSkills(button.dataset.skill);
 }
-skillQuery.addEventListener('input', () => renderSkills($('.tool-tabs [aria-selected="true"]').dataset.skill));
 selectSkill($('#tab-languages'));
 
 $$('.tool-tabs button').forEach((button, index, tabs) => { button.addEventListener('click', () => selectSkill(button)); button.addEventListener('keydown', e => { let next; if(['ArrowRight','ArrowDown'].includes(e.key)) next = (index + 1) % tabs.length; else if(['ArrowLeft','ArrowUp'].includes(e.key)) next = (index + tabs.length - 1) % tabs.length; else if(e.key === 'Home') next = 0; else if(e.key === 'End') next = tabs.length - 1; if(next !== undefined) { e.preventDefault(); tabs[next].focus(); selectSkill(tabs[next]); } }); });
