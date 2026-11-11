@@ -4,6 +4,22 @@ const themeButton = $('#theme');
 function setTheme(berry) { document.body.classList.toggle('berry', berry); themeButton.setAttribute('aria-pressed', String(berry)); themeButton.setAttribute('aria-label', berry ? 'Switch to blush pink theme' : 'Switch to berry pink theme'); document.querySelector('meta[name="theme-color"]').content = berry ? '#321c2a' : '#fff8f7'; }
 try { setTheme(localStorage.getItem('arunima-v2-theme') === 'berry'); } catch {}
 themeButton.addEventListener('click', () => { const berry = !document.body.classList.contains('berry'); setTheme(berry); try { localStorage.setItem('arunima-v2-theme', berry ? 'berry' : 'blush'); } catch {} });
+const flower = $('.hero-flower');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let flowerTurn;
+flower.addEventListener('click', () => {
+  if (reducedMotion.matches) return;
+  flowerTurn?.cancel();
+  flowerTurn = flower.animate(
+    [
+      { transform: 'rotate(0deg)' },
+      { transform: 'rotate(27deg)', offset: 0.55 },
+      { transform: 'rotate(-6deg)', offset: 0.82 },
+      { transform: 'rotate(0deg)' }
+    ],
+    { duration: 740, easing: 'ease-in-out' }
+  );
+});
 let toastTimer;
 function toast(message) { const el = $('#toast'); el.textContent = message; el.classList.add('visible'); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('visible'), 3500); }
 $$('[data-copy]').forEach(button => button.addEventListener('click', async () => { try { await navigator.clipboard.writeText(button.dataset.copy); toast('Copied: ' + button.dataset.copy); } catch { toast(button.dataset.copy); } }));
