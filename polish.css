@@ -123,3 +123,9 @@ h1,h2,h3,.hero h1,.welcome-line,.project h3,.brand{font-family:var(--font-headin
   .skill-board .skill-label,.skill-board .skill-tile:first-child .skill-label{font-size:11px}
   .skills-panel{padding:8px}
 }
+
+/* The portrait is pinned to the yellow note; the original rings orbit behind it. */
+.hero-portrait.sticky-photo{background:var(--paper);border-color:#e9d39f;border-radius:2px;padding:10px 10px 16px;box-shadow:4px 6px 0 var(--shadow)}
+.sticky-photo::before{content:'';position:absolute;z-index:1;top:-8px;left:50%;width:54px;height:19px;background:#dec5b7cc;transform:translateX(-50%) rotate(-11deg)}
+.sticky-photo img{border-radius:1px}
+@media(max-width:760px){.hero-portrait.sticky-photo{padding:7px 7px 12px}}
