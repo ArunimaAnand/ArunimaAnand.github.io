@@ -244,3 +244,11 @@ main > .section h2 {
 @media (prefers-reduced-motion: reduce) {
   .hero-flower, .hero-flower:hover { transition: none; transform: none; }
 }
+
+/* Compact, scannable work entries. */
+#work .timeline-item { padding-bottom: 18px; margin-bottom: 18px; }
+#work .timeline-item:last-child { margin-bottom: 0; }
+#work .timeline-content p { margin: 7px 0 0; line-height: 1.65; }
+#work .teaching-term { padding-bottom: 10px; }
+#work .teaching-term:last-child { padding-bottom: 0; }
+#work .teaching-term p { margin-top: 2px; }
