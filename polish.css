@@ -170,16 +170,21 @@ main > .section h2 {
 .hero-art {
   width: 100%;
   max-width: 500px;
-  height: 424px;
+  --flower-top: 82px;
+  --flower-size: min(46%, 224px);
+  --burst-width: clamp(92px, 15vw, 169px);
+  height: 490px;
   margin: 0 auto;
   transform: none;
   isolation: isolate;
+  container-type: inline-size;
 }
 .bloom.hero-flower {
   z-index: 1;
-  top: 20px;
-  left: 5%;
-  width: min(55%, 267px);
+  top: var(--flower-top);
+  left: 50%;
+  translate: -50% 0;
+  width: var(--flower-size);
   height: auto;
   aspect-ratio: 1;
   background: transparent;
@@ -189,8 +194,8 @@ main > .section h2 {
 .hero-flower svg { display: block; }
 .hero-portrait.sticky-photo {
   top: -9px;
-  right: 3%;
-  width: min(32%, 157px);
+  right: 1%;
+  width: min(24%, 125px);
   padding: 9px 9px 24px;
   border-color: #e9d9bc;
   border-radius: 2px;
@@ -210,12 +215,13 @@ main > .section h2 {
 }
 .sticky-photo img { border-radius: 1px; }
 .hero .profile-note {
-  left: 4%;
+  left: 50%;
   bottom: 3px;
   width: max-content;
   max-width: 92%;
   padding: 9px 12px;
-  transform: rotate(-2deg);
+  transform: translateX(-50%) rotate(-2deg);
+  text-align: left;
 }
 .profile-note .code-window { padding-bottom: 4px; }
 .hero .profile-note pre { margin: 6px 0 0; font: 10px/1.45 var(--font-code); }
@@ -233,10 +239,13 @@ main > .section h2 {
   }
   .header nav a:nth-child(n+5) { grid-column: span 4; }
   .hero { gap: 28px; }
-  .hero-art { max-width: 390px; height: clamp(324px, 88vw, 360px); }
+  .hero-art {
+    --flower-top: 57px;
+    --burst-width: clamp(94px, 31vw, 140px);
+    max-width: 390px;
+    height: clamp(382px, 104vw, 425px);
+  }
   .hero-portrait.sticky-photo { top: -1px; padding: 6px 6px 20px; }
-  .bloom.hero-flower { top: 31px; }
-  .hero .profile-note { left: 50%; transform: translateX(-50%) rotate(-2deg); }
   .hero .profile-note pre { font-size: 9px; }
   .section .section-intro { margin-bottom: 0; }
   .about, .journey { gap: 15px; }
@@ -252,3 +261,83 @@ main > .section h2 {
 #work .teaching-term { padding-bottom: 10px; }
 #work .teaching-term:last-child { padding-bottom: 0; }
 #work .teaching-term p { margin-top: 2px; }
+
+.section-emoji { margin-inline-start: 3px; font-size: 1.35em; vertical-align: middle; }
+.github-emblem { width: 28px; height: 28px; }
+.github-emblem svg { width: 17px; height: 17px; }
+#work .work-highlights {
+  display: grid;
+  gap: 5px;
+  margin: 8px 0 0;
+  line-height: 1.65;
+}
+#work .work-highlights li { margin: 0; padding-left: 2px; }
+
+.flower-burst {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+.flower-burst span {
+  position: absolute;
+  top: calc(var(--flower-top) + min(23cqi, 112px));
+  left: 50%;
+  padding: 4px 8px;
+  border: 1px solid var(--flower);
+  border-radius: 7px;
+  background: var(--card);
+  color: var(--accent);
+  box-shadow: 2px 3px 0 var(--shadow);
+  white-space: nowrap;
+  font: 600 clamp(9px, 1vw, 12px)/1.35 var(--font-code);
+  animation: flower-burst 2.15s ease-out both;
+  --end-x: calc(var(--x) * var(--burst-width));
+  --end-y: calc(var(--y) * clamp(96px, 19cqi + 44px, 133px));
+}
+@keyframes flower-burst {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.45); }
+  25%, 76% { opacity: 1; transform: translate(-50%, -50%) translate(var(--end-x), var(--end-y)); }
+  100% { opacity: 0; transform: translate(-50%, -50%) translate(var(--end-x), calc(var(--end-y) - 12px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flower-burst span {
+    animation: none;
+    transform: translate(-50%, -50%) translate(var(--end-x), var(--end-y));
+  }
+}
+
+.project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.project-grid .project { align-self: stretch; }
+.project-art.freshgraph-art {
+  display: grid;
+  place-content: center;
+  gap: 13px;
+  padding: 30px 12px 12px;
+  background: linear-gradient(140deg, #fff3d9, #ffc7a8);
+  color: #743d32;
+}
+.freshgraph-diagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 2vw, 15px);
+}
+.freshgraph-diagram > div {
+  display: grid;
+  gap: 2px;
+  min-width: 92px;
+  padding: 9px 10px;
+  border: 1px solid #c58168;
+  border-radius: 9px;
+  background: #fff8e9;
+  text-align: center;
+}
+.freshgraph-diagram strong { font: 800 24px/1.1 var(--font-heading); }
+.freshgraph-diagram span, .freshgraph-methods { font: 600 11px/1.4 var(--font-ui); }
+.freshgraph-diagram .freshgraph-arrow { font-size: 19px; }
+.freshgraph-methods { text-align: center; }
+.freshgraph-methods span { padding-inline: 3px; }
+@media (max-width: 760px) {
+  .project-grid { grid-template-columns: minmax(0, 1fr); }
+}

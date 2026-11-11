@@ -6,19 +6,31 @@ try { setTheme(localStorage.getItem('arunima-v2-theme') === 'berry'); } catch {}
 themeButton.addEventListener('click', () => { const berry = !document.body.classList.contains('berry'); setTheme(berry); try { localStorage.setItem('arunima-v2-theme', berry ? 'berry' : 'blush'); } catch {} });
 const flower = $('.hero-flower');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const flowerBurst = $('.flower-burst');
+const burstLabels = ['Python', 'TensorFlow', 'LLMs', 'Time series', 'def fit():', 'predict()', 'PyTorch', 'return scores'];
 let flowerTurn;
+let clearFlowerBurst;
+
 flower.addEventListener('click', () => {
-  if (reducedMotion.matches) return;
   flowerTurn?.cancel();
-  flowerTurn = flower.animate(
-    [
-      { transform: 'rotate(0deg)' },
-      { transform: 'rotate(27deg)', offset: 0.55 },
-      { transform: 'rotate(-6deg)', offset: 0.82 },
-      { transform: 'rotate(0deg)' }
-    ],
-    { duration: 740, easing: 'ease-in-out' }
-  );
+  if (!reducedMotion.matches) {
+    flowerTurn = flower.animate(
+      [{ transform: 'rotate(0turn)' }, { transform: 'rotate(1turn)' }],
+      { duration: 860, easing: 'cubic-bezier(.22,.72,.27,1)' }
+    );
+  }
+
+  const labels = burstLabels.map((label, index) => {
+    const chip = document.createElement('span');
+    const angle = index * Math.PI / 4 + Math.PI / 8;
+    chip.textContent = label;
+    chip.style.setProperty('--x', Math.cos(angle).toFixed(3));
+    chip.style.setProperty('--y', Math.sin(angle).toFixed(3));
+    return chip;
+  });
+  flowerBurst.replaceChildren(...labels);
+  clearTimeout(clearFlowerBurst);
+  clearFlowerBurst = setTimeout(() => flowerBurst.replaceChildren(), 2200);
 });
 let toastTimer;
 function toast(message) { const el = $('#toast'); el.textContent = message; el.classList.add('visible'); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('visible'), 3500); }
@@ -59,6 +71,13 @@ const projects = {
       "Clickstream",
       "NDCG@10"
     ]
+  },
+  freshgraph: {
+    title: 'FreshGraph | Cold-Start Recommendation',
+    summary: 'Built a time-based benchmark to test recommendation methods when interaction history was sparse.',
+    approach: 'Compared popularity, TF-IDF, MiniLM embeddings, and graph-enhanced retrieval across 102K+ catalog items and 200 evaluation cases, including 68 simulated cold-start targets.',
+    outcome: 'Measured Hit@10 and query latency. Graph expansion added zero top-10 hits over semantic retrieval in this benchmark. An error audit found that 163 of 200 cases had just one prior interaction.',
+    tags: ['Recommender systems', 'MiniLM', 'Graph retrieval', 'Hit@10']
   }
 };
 const dialog = $('#project-dialog'); let opener;
