@@ -41,3 +41,8 @@ h1,h2,h3,.hero h1,.welcome-line,.project h3,.brand{font-family:var(--font-headin
 .skill-text-only .skill-label,.skill-text-only:first-child .skill-label{font-size:15px;font-weight:600;line-height:1.45}
 .tool-tabs button>span:not(.skill-icon){font-weight:600}
 @media(max-width:760px){.hero h1{letter-spacing:-2.7px}.skill-text-only,.skill-text-only:first-child{padding:16px 14px;min-height:83px}.skill-text-only .skill-label,.skill-text-only:first-child .skill-label{font-size:14px}}
+
+/* Keep role labels subordinate to the name. */
+.hero-roles{font-size:18px;gap:7px}
+.timeline-content li{margin-bottom:8px}
+@media(max-width:760px){.hero-roles{font-size:16px}}

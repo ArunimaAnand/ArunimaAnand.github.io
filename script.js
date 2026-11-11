@@ -13,10 +13,48 @@ $('#bloom').addEventListener('click', () => { if(blooming) return; blooming = tr
 $('#motion').addEventListener('click', () => { const paused = document.querySelector('.hero-art').classList.toggle('paused'); $('#motion').setAttribute('aria-pressed', String(paused)); $('#motion').setAttribute('aria-label', paused ? 'Resume rotating rings' : 'Pause rotating rings'); $('#motion').textContent = paused ? '▷' : 'Ⅱ'; });
 $$('[data-copy]').forEach(button => button.addEventListener('click', async () => { try { await navigator.clipboard.writeText(button.dataset.copy); toast('Copied: ' + button.dataset.copy); } catch { toast(button.dataset.copy); } }));
 const projects = {
-  judge: { title: 'Evidence-grounded LLM evaluation', date: 'JAN — MAR 2026 · EVIDENCE-GROUNDED LLM EVALUATION & RETRIEVAL', summary: 'Distilling a rubric-based teacher judge into a smaller model for summary evaluation.', approach: 'Designed a distilled LLM-as-a-judge with source-evidence retrieval. Used PyTorch and LoRA to adapt Qwen2.5-3B to evaluate coherence, consistency, fluency, and relevance. Compared the model’s judgments with human annotations through fine-grained meta-evaluation.', outcome: 'Achieved 75.5% off-by-1 agreement with human annotations and identified a ranking–calibration tradeoff in automated evaluation.', tags: ['PyTorch', 'LoRA', 'Qwen2.5-3B', 'Retrieval', 'LLM evaluation'], link: 'https://github.com/karthiknm/LLM-Judge' },
-  ranking: { title: 'Personalized listing ranking', date: 'OCT — DEC 2025 · PERSONALIZED AD RANKING FOR A HOUSING MARKETPLACE', summary: 'Ranking housing listings and ads using browsing behavior and user–item affinity.', approach: 'Built a personalized ad and listing ranking system over 500K+ clickstream events and 100K+ user profiles. Used browsing behavior and user–item affinity to rank property listings and campaign content, then generated user-level targeting scores for high-affinity audiences.', outcome: 'Improved campaign planning signal quality by 32%.', tags: ['Personalization', 'Recommender systems', 'Ranking', 'Behavioral features'], link: null },
-  waste: { title: 'SnapTrash: food-waste intelligence', date: 'APR 2026 · COMPUTER VISION + LLM FOOD WASTE INTELLIGENCE', summary: 'A vision and language pipeline for classifying restaurant waste and forecasting weekly trends.', approach: 'Built a CV and LLM platform using S3, Lambda, AWS Rekognition, Grok Vision, and Databricks for image ingestion, deduplication, classification, and storage. Served structured waste trends and Prophet-based weekly forecasts through FastAPI and React.', outcome: 'Delivered a pipeline from waste images to analytics and forecasts for restaurant waste monitoring and inventory planning.', tags: ['Computer vision', 'Grok Vision', 'AWS', 'Databricks', 'Prophet', 'FastAPI', 'React'], link: 'https://github.com/hannahmypham/SnapTrash-Restaurant-Waste-Intelligence-Platform' },
-  risk: {title: 'Financial-risk forecasting & error analysis', date: 'RESEARCH PROJECT · PANEL FORECASTING', summary: 'Evaluating long-horizon forecasts across institutions and time windows.', approach: 'Built a panel forecasting pipeline with lag and rolling features, forward-chaining cross-validation, and benchmarks using ElasticNet, gradient-boosted trees, and XGBoost. Used slice-based diagnostics and feature attribution to inspect errors by entity and time.', outcome: 'Produced uncertainty-bounded risk bands and ranked watchlists with interpretable drivers for high-risk prioritization.', tags: ['Time-series forecasting', 'ElasticNet', 'XGBoost', 'Error analysis'], link: null }
+  "causal": {
+    "title": "Causal Reasoning & LLM Evaluation",
+    "date": "SEP — NOV 2026 · CAUSAL REASONING",
+    "summary": "Checking whether language-model answers follow from a causal graph.",
+    "approach": "Built a tool-augmented framework with Python, NetworkX, and Pydantic. It checks causal DAGs, intervention queries, backdoor adjustment, and whether the evidence supports a proposed answer.",
+    "outcome": "Across 360 problems on 72 held-out graphs, causal correctness rose from 68% to 84% versus direct LLM reasoning. Unsupported answers fell by 78%, and false abstentions were limited to 8%.",
+    "tags": [
+      "Python",
+      "NetworkX",
+      "Pydantic",
+      "Causal inference"
+    ],
+    "link": null
+  },
+  "judge": {
+    "title": "LLM-as-a-Judge for Summary Evaluation",
+    "date": "JAN — MAR 2026 · SUMMARY EVALUATION",
+    "summary": "Training a smaller judge to score summaries against their source documents.",
+    "approach": "Used a rubric to guide teacher-model judgments on coherence, factual consistency, fluency, and relevance. Distilled those judgments into Qwen2.5-3B with PyTorch and LoRA.",
+    "outcome": "Reached 85.5% agreement with human ratings across 1,200 held-out summaries, 12 percentage points above the zero-shot baseline.",
+    "tags": [
+      "PyTorch",
+      "LoRA",
+      "Qwen2.5-3B",
+      "LLM evaluation"
+    ],
+    "link": "https://github.com/ArunimaAnand/LLM-Judge"
+  },
+  "ranking": {
+    "title": "Personalized Ad Ranking for Housing",
+    "date": "OCT — DEC 2025 · RANKING & PERSONALIZATION",
+    "summary": "Ranking housing listings and ads from browsing behavior and user–item affinity.",
+    "approach": "Built a personalized ranking system with 500K+ clickstream events and 100K+ user profiles. Engineered behavioral features and affinity scores, then used segmentation to improve recommendations and audience targeting.",
+    "outcome": "Achieved 15% higher NDCG@10 than a popularity baseline and improved planning-signal quality by 32%.",
+    "tags": [
+      "Recommender systems",
+      "Ranking",
+      "Clickstream",
+      "NDCG@10"
+    ],
+    "link": null
+  }
 };
 const dialog = $('#project-dialog'); let opener;
 $$('.project-open').forEach(button => button.addEventListener('click', () => { const p = projects[button.dataset.project]; opener = button; $('#dialog-title').textContent = p.title; $('#dialog-date').textContent = p.date; $('#dialog-summary').textContent = p.summary; $('#dialog-approach').textContent = p.approach; $('#dialog-outcome').textContent = p.outcome; $('#dialog-tags').replaceChildren(...p.tags.map(tag => { const span = document.createElement('span'); span.textContent = tag; return span; })); const link = $('#dialog-link'); link.hidden = !p.link; if(p.link) link.href = p.link; else link.removeAttribute('href'); dialog.showModal(); document.body.style.overflow = 'hidden'; }));
@@ -28,14 +66,11 @@ const skills = {
     "tags": [
       "Python",
       "SQL",
-      "Java",
-      "C++",
       "R",
-      "NumPy",
       "Pandas",
+      "NumPy",
       "scikit-learn",
       "statsmodels",
-      "Matplotlib",
       "NLTK"
     ]
   },
@@ -43,96 +78,71 @@ const skills = {
     "tags": [
       "Recommender systems",
       "Ranking",
-      "Classification",
       "Regression",
-      "Regularization",
-      "Feature engineering",
-      "Model evaluation",
       "Cross-validation",
+      "Calibration",
       "Time-series forecasting",
-      "Clustering",
-      "Random Forest",
       "XGBoost",
       "LightGBM",
-      "Prophet",
+      "Random Forest",
       "ARIMA",
-      "HDBSCAN"
+      "Prophet"
     ]
   },
   "deep": {
     "tags": [
       "PyTorch",
       "TensorFlow",
-      "LSTMs",
-      "Transformers",
-      "CNNs",
-      "RNNs",
-      "Optimization",
-      "Hyperparameter tuning",
-      "Knowledge distillation",
-      "LoRA"
+      "LSTM",
+      "Knowledge distillation"
     ]
   },
   "genai": {
     "tags": [
-      "Generative AI",
-      "Hugging Face",
-      "LLM evaluation",
-      "RAG",
-      "Prompt engineering",
       "BERT",
-      "Embeddings",
-      "Semantic search",
-      "Information retrieval",
-      "TF-IDF",
-      "BM25",
-      "Evidence-grounded scoring",
-      "Model calibration"
+      "LoRA",
+      "RAG",
+      "LLM-as-a-Judge",
+      "LLM evaluation",
+      "Qwen2.5-3B"
     ]
   },
   "systems": {
     "tags": [
       "PySpark",
       "Databricks",
+      "AWS S3",
       "AWS SageMaker",
-      "S3",
-      "Lambda",
-      "Step Functions",
-      "Azure",
-      "MLflow",
-      "FastAPI",
-      "GitHub",
-      "CI/CD",
-      "Real-time model serving",
+      "AWS Step Functions",
+      "Model deployment",
       "Batch inference",
+      "Feature engineering",
       "Model monitoring",
-      "Model versioning",
       "Drift detection",
-      "Distributed computing",
-      "AI-assisted development"
+      "Git"
     ]
   },
   "analytics": {
     "tags": [
-      "Statistical modeling",
+      "Statistical inference",
+      "Probabilistic modeling",
       "Causal inference",
       "A/B testing",
-      "Experiment design",
-      "EDA",
-      "Model diagnostics",
-      "KPI design",
+      "Experimental design",
+      "Hypothesis testing",
       "Power BI",
       "Tableau",
-      "Dashboard design",
-      "Data visualization",
-      "Bayesian methods"
+      "Matplotlib",
+      "KPI dashboards",
+      "Cohort analysis",
+      "Product metrics"
     ]
   }
 };
 function skillTile(label, index, key) {
   const tile = document.createElement('span'); tile.className = 'skill-tile'; tile.setAttribute('role','listitem');
   const glyph = document.createElement('span'); glyph.className = 'skill-glyph'; glyph.setAttribute('aria-hidden','true');
-  const mono = {Python:'Py',SQL:'SQL',Java:'Jv','C++':'C++',R:'R',NumPy:'np',Pandas:'pd','scikit-learn':'sk',statsmodels:'sm',Matplotlib:'plt',NLTK:'nl'};
+  const mono = {Python:'Py',SQL:'SQL',R:'R',NumPy:'np',Pandas:'pd','scikit-learn':'sk',statsmodels:'sm',NLTK:'nl'};
   if(key === 'languages') glyph.textContent = mono[label] || label.slice(0,2);
   const name = document.createElement('span'); name.className = 'skill-label'; name.textContent = label;
   if(key === 'languages') tile.append(glyph);
