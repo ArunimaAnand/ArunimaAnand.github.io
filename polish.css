@@ -46,3 +46,23 @@ h1,h2,h3,.hero h1,.welcome-line,.project h3,.brand{font-family:var(--font-headin
 .hero-roles{font-size:18px;gap:7px}
 .timeline-content li{margin-bottom:8px}
 @media(max-width:760px){.hero-roles{font-size:16px}}
+
+/* A still flower and a readable profile card. */
+.hero-roles{font-size:16px;gap:6px}
+.hero-flower,.hero-flower:hover{animation:none;transition:none;transform:none;cursor:default}
+.hero .profile-note{transform:rotate(-4deg);width:min(365px,100%);padding:14px 17px}
+.profile-note ul{margin:10px 0 0;padding:0;list-style:none;font-size:13px;line-height:1.55}
+.profile-note li+li{margin-top:6px}
+.profile-note a,.about-content a{font-weight:400;text-decoration:underline;text-underline-offset:3px;color:var(--accent)}
+.about-content strong,.profile-note strong{color:var(--ink);font-weight:700}
+.teaching-terms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-top:16px}
+.teaching-terms>div{padding:15px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.teaching-terms h4{margin:3px 0 6px;font-size:17px}
+.teaching-terms p{margin-bottom:0}
+.skill-search{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;margin-bottom:20px}
+.skill-search label{font-size:14px;font-weight:700}
+.skill-search input{font:inherit;flex:1;min-width:120px;max-width:350px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--ink);padding:8px 12px}
+.skill-search span,#skill-empty,.recruiter-contact{color:var(--muted)}
+.skill-search span{font-size:13px}
+.recruiter-contact{font-size:16px;margin:0 0 20px}
+@media(max-width:760px){.hero-roles{font-size:14px}.hero .profile-note{left:0;bottom:0;width:min(345px,100%)}.teaching-terms{grid-template-columns:1fr}}
