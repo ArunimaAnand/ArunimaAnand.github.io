@@ -71,13 +71,6 @@ const projects = {
       "Clickstream",
       "NDCG@10"
     ]
-  },
-  freshgraph: {
-    title: 'FreshGraph | Cold-Start Recommendation',
-    summary: 'Built a time-based benchmark to test recommendation methods when interaction history was sparse.',
-    approach: 'Compared popularity, TF-IDF, MiniLM embeddings, and graph-enhanced retrieval across 102K+ catalog items and 200 evaluation cases, including 68 simulated cold-start targets.',
-    outcome: 'Measured Hit@10 and query latency. Graph expansion added zero top-10 hits over semantic retrieval in this benchmark. An error audit found that 163 of 200 cases had just one prior interaction.',
-    tags: ['Recommender systems', 'MiniLM', 'Graph retrieval', 'Hit@10']
   }
 };
 const dialog = $('#project-dialog'); let opener;
