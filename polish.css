@@ -193,9 +193,9 @@ main > .section h2 {
 .hero-flower:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 50%; }
 .hero-flower svg { display: block; }
 .hero-portrait.sticky-photo {
-  top: -9px;
-  right: 1%;
-  width: min(24%, 125px);
+  top: -23px;
+  right: 0;
+  width: min(29%, 145px);
   padding: 9px 9px 24px;
   border-color: #e9d9bc;
   border-radius: 2px;
@@ -245,7 +245,7 @@ main > .section h2 {
     max-width: 390px;
     height: clamp(382px, 104vw, 425px);
   }
-  .hero-portrait.sticky-photo { top: -1px; padding: 6px 6px 20px; }
+  .hero-portrait.sticky-photo { top: -18px; width: min(27%, 107px); padding: 6px 6px 20px; }
   .hero .profile-note pre { font-size: 9px; }
   .section .section-intro { margin-bottom: 0; }
   .about, .journey { gap: 15px; }
@@ -265,14 +265,6 @@ main > .section h2 {
 .section-emoji { margin-inline-start: 3px; font-size: 1.35em; vertical-align: middle; }
 .github-emblem { width: 28px; height: 28px; }
 .github-emblem svg { width: 17px; height: 17px; }
-#work .work-highlights {
-  display: grid;
-  gap: 5px;
-  margin: 8px 0 0;
-  line-height: 1.65;
-}
-#work .work-highlights li { margin: 0; padding-left: 2px; }
-
 .flower-burst {
   position: absolute;
   inset: 0;
@@ -291,14 +283,14 @@ main > .section h2 {
   box-shadow: 2px 3px 0 var(--shadow);
   white-space: nowrap;
   font: 600 clamp(9px, 1vw, 12px)/1.35 var(--font-code);
-  animation: flower-burst 2.15s ease-out both;
+  animation: flower-burst 1.45s var(--delay) cubic-bezier(.2,.75,.3,1) both;
   --end-x: calc(var(--x) * var(--burst-width));
   --end-y: calc(var(--y) * clamp(96px, 19cqi + 44px, 133px));
 }
 @keyframes flower-burst {
-  0% { opacity: 0; transform: translate(-50%, -50%) scale(.45); }
-  25%, 76% { opacity: 1; transform: translate(-50%, -50%) translate(var(--end-x), var(--end-y)); }
-  100% { opacity: 0; transform: translate(-50%, -50%) translate(var(--end-x), calc(var(--end-y) - 12px)); }
+  0% { opacity: 0; filter: blur(3px); transform: translate(-50%, -50%) scale(.55); }
+  30%, 68% { opacity: 1; filter: blur(0); transform: translate(-50%, -50%) translate(var(--end-x), var(--end-y)); }
+  100% { opacity: 0; filter: blur(4px); transform: translate(-50%, -50%) translate(var(--end-x), calc(var(--end-y) - 14px)); }
 }
 @media (prefers-reduced-motion: reduce) {
   .flower-burst span {

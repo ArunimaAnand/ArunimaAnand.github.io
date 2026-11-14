@@ -7,7 +7,10 @@ themeButton.addEventListener('click', () => { const berry = !document.body.class
 const flower = $('.hero-flower');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const flowerBurst = $('.flower-burst');
-const burstLabels = ['Python', 'TensorFlow', 'LLMs', 'Time series', 'def fit():', 'predict()', 'PyTorch', 'return scores'];
+const burstWaves = [
+  ['Python', 'PyTorch', 'XGBoost', 'LLMs', 'predict()', 'LightGBM', 'TensorFlow', 'Forecasting'],
+  ['LoRA', 'A/B testing', 'Causal ML', 'RAG', 'fit()', 'Distillation', 'Calibration', 'Inference']
+];
 let flowerTurn;
 let clearFlowerBurst;
 
@@ -20,17 +23,19 @@ flower.addEventListener('click', () => {
     );
   }
 
-  const labels = burstLabels.map((label, index) => {
+  const waves = reducedMotion.matches ? burstWaves.slice(0, 1) : burstWaves;
+  const labels = waves.flatMap((wave, waveIndex) => wave.map((label, index) => {
     const chip = document.createElement('span');
-    const angle = index * Math.PI / 4 + Math.PI / 8;
+    const angle = (index + 0.5 + waveIndex * 0.16) * 2 * Math.PI / wave.length;
     chip.textContent = label;
     chip.style.setProperty('--x', Math.cos(angle).toFixed(3));
     chip.style.setProperty('--y', Math.sin(angle).toFixed(3));
+    chip.style.setProperty('--delay', `${waveIndex * 1250 + index * 18}ms`);
     return chip;
-  });
+  }));
   flowerBurst.replaceChildren(...labels);
   clearTimeout(clearFlowerBurst);
-  clearFlowerBurst = setTimeout(() => flowerBurst.replaceChildren(), 2200);
+  clearFlowerBurst = setTimeout(() => flowerBurst.replaceChildren(), 2900);
 });
 let toastTimer;
 function toast(message) { const el = $('#toast'); el.textContent = message; el.classList.add('visible'); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('visible'), 3500); }
@@ -93,24 +98,15 @@ const skills = {
   },
   "ml": {
     "tags": [
-      "Recommender systems",
-      "Ranking",
-      "Regression",
-      "Cross-validation",
-      "Calibration",
-      "Time-series forecasting",
       "XGBoost",
       "LightGBM",
-      "Random Forest",
-      "ARIMA",
-      "Prophet"
+      "Random Forest"
     ]
   },
   "deep": {
     "tags": [
       "PyTorch",
       "TensorFlow",
-      "LSTM",
       "Knowledge distillation"
     ]
   },
@@ -119,9 +115,7 @@ const skills = {
       "BERT",
       "LoRA",
       "RAG",
-      "LLM-as-a-Judge",
-      "LLM evaluation",
-      "Qwen2.5-3B"
+      "LLM-as-a-Judge"
     ]
   },
   "systems": {
@@ -147,6 +141,10 @@ const skills = {
       "A/B testing",
       "Experimental design",
       "Hypothesis testing",
+      "Regression",
+      "Time-series forecasting",
+      "Cross-validation",
+      "Calibration",
       "Power BI",
       "Tableau",
       "Matplotlib",
