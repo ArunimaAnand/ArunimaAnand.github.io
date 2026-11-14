@@ -172,7 +172,6 @@ main > .section h2 {
   max-width: 500px;
   --flower-top: 82px;
   --flower-size: min(46%, 224px);
-  --burst-width: clamp(92px, 15vw, 169px);
   height: 490px;
   margin: 0 auto;
   transform: none;
@@ -241,7 +240,6 @@ main > .section h2 {
   .hero { gap: 28px; }
   .hero-art {
     --flower-top: 57px;
-    --burst-width: clamp(94px, 31vw, 140px);
     max-width: 390px;
     height: clamp(382px, 104vw, 425px);
   }
@@ -275,26 +273,27 @@ main > .section h2 {
   position: absolute;
   top: calc(var(--flower-top) + min(23cqi, 112px));
   left: 50%;
-  padding: 4px 8px;
-  border: 1px solid var(--flower);
-  border-radius: 7px;
-  background: var(--card);
-  color: var(--accent);
-  box-shadow: 2px 3px 0 var(--shadow);
+  padding: 6px 11px;
+  border: 1px solid #efa2bdad;
+  border-radius: 999px;
+  background: #ffd4e5c4;
+  color: #72334d;
+  box-shadow: inset 0 1px 0 #fff9, 0 3px 10px #ae4b7526;
   white-space: nowrap;
   font: 600 clamp(9px, 1vw, 12px)/1.35 var(--font-code);
-  animation: flower-burst 1.45s var(--delay) cubic-bezier(.2,.75,.3,1) both;
-  --end-x: calc(var(--x) * var(--burst-width));
-  --end-y: calc(var(--y) * clamp(96px, 19cqi + 44px, 133px));
+  animation: bubble-float 2.15s var(--delay) ease-out both;
+  --end-x: calc(var(--x) * min(42cqi, 205px));
+  --end-y: max(-42cqi, calc(-1px * var(--lift)));
 }
-@keyframes flower-burst {
-  0% { opacity: 0; filter: blur(3px); transform: translate(-50%, -50%) scale(.55); }
-  30%, 68% { opacity: 1; filter: blur(0); transform: translate(-50%, -50%) translate(var(--end-x), var(--end-y)); }
-  100% { opacity: 0; filter: blur(4px); transform: translate(-50%, -50%) translate(var(--end-x), calc(var(--end-y) - 14px)); }
+@keyframes bubble-float {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.3); }
+  22% { opacity: 1; transform: translate(-50%, -50%) translate(calc(var(--end-x) * .54), calc(var(--end-y) * .48)) rotate(var(--tilt)) scale(1.07); }
+  57% { opacity: 1; transform: translate(-50%, -50%) translate(var(--end-x), calc(var(--end-y) * .78)) rotate(calc(var(--tilt) * -.55)); }
+  100% { opacity: 0; filter: blur(3px); transform: translate(-50%, -50%) translate(calc(var(--end-x) * .92), var(--end-y)) rotate(var(--tilt)) scale(1.12); }
 }
 @media (prefers-reduced-motion: reduce) {
   .flower-burst span {
     animation: none;
-    transform: translate(-50%, -50%) translate(var(--end-x), var(--end-y));
+    transform: translate(-50%, -50%) translate(var(--end-x), calc(var(--end-y) * .7));
   }
 }

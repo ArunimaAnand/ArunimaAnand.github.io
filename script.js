@@ -7,10 +7,12 @@ themeButton.addEventListener('click', () => { const berry = !document.body.class
 const flower = $('.hero-flower');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const flowerBurst = $('.flower-burst');
-const burstWaves = [
-  ['Python', 'PyTorch', 'XGBoost', 'LLMs', 'predict()', 'LightGBM', 'TensorFlow', 'Forecasting'],
-  ['LoRA', 'A/B testing', 'Causal ML', 'RAG', 'fit()', 'Distillation', 'Calibration', 'Inference']
+const bubbleWaves = [
+  ['Python', 'PyTorch', 'λ', 'predict()', '✧', 'LightGBM', 'TensorFlow', '♡'],
+  ['XGBoost', '✧', 'A/B testing', 'LoRA', 'fit()', 'RAG', '∇', 'Forecasting'],
+  ['♡', 'Calibration', 'LLMs', 'return', '✧', 'Inference', 'Causal ML', '∇']
 ];
+const bubbleLanes = [-.86, .82, -.45, .4, -.69, .63, -.17, .14];
 let flowerTurn;
 let clearFlowerBurst;
 
@@ -23,19 +25,20 @@ flower.addEventListener('click', () => {
     );
   }
 
-  const waves = reducedMotion.matches ? burstWaves.slice(0, 1) : burstWaves;
-  const labels = waves.flatMap((wave, waveIndex) => wave.map((label, index) => {
-    const chip = document.createElement('span');
-    const angle = (index + 0.5 + waveIndex * 0.16) * 2 * Math.PI / wave.length;
-    chip.textContent = label;
-    chip.style.setProperty('--x', Math.cos(angle).toFixed(3));
-    chip.style.setProperty('--y', Math.sin(angle).toFixed(3));
-    chip.style.setProperty('--delay', `${waveIndex * 1250 + index * 18}ms`);
-    return chip;
+  const waves = reducedMotion.matches ? bubbleWaves.slice(0, 1) : bubbleWaves;
+  const bubbles = waves.flatMap((wave, waveIndex) => wave.map((label, index) => {
+    const bubble = document.createElement('span');
+    const lane = bubbleLanes[(index + waveIndex * 3) % bubbleLanes.length];
+    bubble.textContent = label;
+    bubble.style.setProperty('--x', lane);
+    bubble.style.setProperty('--lift', 70 + Math.random() * 54 + (1 - Math.abs(lane)) * 36);
+    bubble.style.setProperty('--tilt', `${Math.random() * 34 - 17}deg`);
+    bubble.style.setProperty('--delay', `${waveIndex * 880 + index * 105}ms`);
+    return bubble;
   }));
-  flowerBurst.replaceChildren(...labels);
+  flowerBurst.replaceChildren(...bubbles);
   clearTimeout(clearFlowerBurst);
-  clearFlowerBurst = setTimeout(() => flowerBurst.replaceChildren(), 2900);
+  clearFlowerBurst = setTimeout(() => flowerBurst.replaceChildren(), 4750);
 });
 let toastTimer;
 function toast(message) { const el = $('#toast'); el.textContent = message; el.classList.add('visible'); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('visible'), 3500); }
