@@ -264,36 +264,43 @@ main > .section h2 {
 .github-emblem { width: 28px; height: 28px; }
 .github-emblem svg { width: 17px; height: 17px; }
 .flower-burst {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  z-index: 4;
+  z-index: 50;
+  overflow: hidden;
   pointer-events: none;
 }
 .flower-burst span {
   position: absolute;
-  top: calc(var(--flower-top) + min(23cqi, 112px));
-  left: 50%;
+  top: var(--origin-y);
+  left: var(--origin-x);
   padding: 6px 11px;
-  border: 1px solid #efa2bdad;
+  border: 1px solid #efa2bd85;
   border-radius: 999px;
-  background: #ffd4e5c4;
+  background: #ffd4e57a;
   color: #72334d;
-  box-shadow: inset 0 1px 0 #fff9, 0 3px 10px #ae4b7526;
+  box-shadow: inset 0 1px 0 #fff8, 0 3px 10px #ae4b751a;
   white-space: nowrap;
   font: 600 clamp(9px, 1vw, 12px)/1.35 var(--font-code);
-  animation: bubble-float 2.15s var(--delay) ease-out both;
-  --end-x: calc(var(--x) * min(42cqi, 205px));
-  --end-y: max(-42cqi, calc(-1px * var(--lift)));
+  animation: bubble-fall 2.25s var(--delay) both;
 }
-@keyframes bubble-float {
-  0% { opacity: 0; transform: translate(-50%, -50%) scale(.3); }
-  22% { opacity: 1; transform: translate(-50%, -50%) translate(calc(var(--end-x) * .54), calc(var(--end-y) * .48)) rotate(var(--tilt)) scale(1.07); }
-  57% { opacity: 1; transform: translate(-50%, -50%) translate(var(--end-x), calc(var(--end-y) * .78)) rotate(calc(var(--tilt) * -.55)); }
-  100% { opacity: 0; filter: blur(3px); transform: translate(-50%, -50%) translate(calc(var(--end-x) * .92), var(--end-y)) rotate(var(--tilt)) scale(1.12); }
+@keyframes bubble-fall {
+  0% {
+    visibility: hidden;
+    transform: translate(-50%, -50%) scale(.55);
+    animation-timing-function: ease-out;
+  }
+  1% { visibility: visible; }
+  26% {
+    transform: translate(calc(-50% + var(--drift) * .65), calc(-50% - var(--lift))) rotate(var(--tilt));
+    animation-timing-function: ease-in;
+  }
+  82%, 100% { transform: translate(calc(-50% + var(--drift)), calc(-100% + var(--fall))); }
+  91% { transform: translate(calc(-50% + var(--drift)), calc(-100% + var(--fall) - 13px)); }
 }
 @media (prefers-reduced-motion: reduce) {
   .flower-burst span {
     animation: none;
-    transform: translate(-50%, -50%) translate(var(--end-x), calc(var(--end-y) * .7));
+    transform: translate(calc(-50% + var(--drift)), calc(-50% - var(--lift)));
   }
 }

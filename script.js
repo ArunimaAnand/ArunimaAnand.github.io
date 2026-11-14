@@ -25,20 +25,30 @@ flower.addEventListener('click', () => {
     );
   }
 
-  const waves = reducedMotion.matches ? bubbleWaves.slice(0, 1) : bubbleWaves;
+  const still = reducedMotion.matches;
+  const waves = still ? bubbleWaves.slice(0, 1) : bubbleWaves;
+  const origin = flower.getBoundingClientRect();
+  const floor = flowerBurst.getBoundingClientRect();
+  const x = origin.left + origin.width / 2 - floor.left;
+  const y = origin.top + origin.height / 2 - floor.top;
+  flowerBurst.style.setProperty('--origin-x', `${x}px`);
+  flowerBurst.style.setProperty('--origin-y', `${y}px`);
+  flowerBurst.style.setProperty('--fall', `${floor.height - y - 7}px`);
   const bubbles = waves.flatMap((wave, waveIndex) => wave.map((label, index) => {
     const bubble = document.createElement('span');
     const lane = bubbleLanes[(index + waveIndex * 3) % bubbleLanes.length];
     bubble.textContent = label;
-    bubble.style.setProperty('--x', lane);
-    bubble.style.setProperty('--lift', 70 + Math.random() * 54 + (1 - Math.abs(lane)) * 36);
+    const target = Math.max(54, Math.min(floor.width - 54, x + lane * Math.min(230, floor.width * .45)));
+    bubble.style.setProperty('--drift', `${target - x}px`);
+    bubble.style.setProperty('--lift', `${Math.min(Math.max(0, y - 22), 38 + Math.random() * 82)}px`);
     bubble.style.setProperty('--tilt', `${Math.random() * 34 - 17}deg`);
     bubble.style.setProperty('--delay', `${waveIndex * 880 + index * 105}ms`);
+    if (!still) bubble.addEventListener('animationend', () => bubble.remove(), { once: true });
     return bubble;
   }));
   flowerBurst.replaceChildren(...bubbles);
   clearTimeout(clearFlowerBurst);
-  clearFlowerBurst = setTimeout(() => flowerBurst.replaceChildren(), 4750);
+  if (still) clearFlowerBurst = setTimeout(() => flowerBurst.replaceChildren(), 2400);
 });
 let toastTimer;
 function toast(message) { const el = $('#toast'); el.textContent = message; el.classList.add('visible'); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('visible'), 3500); }
